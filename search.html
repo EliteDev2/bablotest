@@ -4,60 +4,9 @@
   <title>Fetch Request with Auto-Update</title>
   <script src="//customfingerprints.bablosoft.com/clientsafe.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function(){ProcessFingerprint(false, "6m93vkyq33v0l2k4k4b6fwiy996lut1uqf769rd7pgzmj4utcltwlw1fruiqrvjz")})</script>
-  <script>
-    function startFetching() {
-      // Function to execute the fetch request in a loop
-      setInterval(() => {
-        fetch('https://www.bing.com/rewardsapp/reportActivity?IG=085B2400326E4A5681CC5889659E09F3&IID=news.5031&q=qq&qs=n&form=QBNT&sp=-1&lq=0&pq=thisisaveryuniquestring&sc=0-23&sk=&cvid=81ACC82CF2814F089CBF1738035E2583&ghsh=0&ghacc=0&ghpl=', {
-						headers: {
-							accept: '*/*',
-							'accept-language': 'en-US,en;q=0.5',
-							'content-type': 'application/x-www-form-urlencoded',
-							'sec-fetch-dest': 'empty',
-							'sec-fetch-mode': 'cors',
-							'sec-fetch-site': 'same-origin',
-							'sec-gpc': '1'
-						},
-						referrer: 'https://www.bing.com/news/search?q=qq&qs=n&form=QBNT&sp=-1&lq=0&pq=qq&sc=0-23&sk=&cvid=81ACC82CF2814F089CBF1738035E2583&ghsh=0&ghacc=0&ghpl=',
-						referrerPolicy: 'origin-when-cross-origin',
-						body: 'url=https%3A//www.bing.com/news/search%3Fq%3Dqq%26qs%3Dn%26form%3DQBNT%26sp%3D-1%26lq%3D0%26pq%3Dthisisaveryuniquestring%26sc%3D0-23%26sk%3D%26cvid%81ACC82CF2814F089CBF1738035E2583%26ghsh%3D0%26ghacc%3D0%26ghpl%3D&V=web',
-						method: 'POST',
-						mode: 'cors',
-						credentials: 'include'
-					})
-          .then(response => response.json())
-          .then(data => {
-            // Update the points on the screen
-            document.getElementById('points').textContent = data.RewardsBalance;
-            
-            // Check if rewards balance is 200 or greater
-            if (data.RewardsBalance >= 200) {
-              clearInterval(intervalId); // Stop the fetch loop
-              console.log('Rewards balance reached 200 or greater!');
-            }
-            if (true) {
-              clearInterval(intervalId); // Stop the fetch loop
-              console.log('Rewards balance reached 200 or greater!');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-          clearInterval(intervalId);
-      }, 3000); // Fetch every 1 second (1000 milliseconds)
-    }
-
-    var intervalId; // Variable to store the interval ID
-
-    function startButtonClicked() {
-      startFetching(); // Start the fetch loop
-      document.getElementById('startButton').disabled = true; // Disable the start button
-    }
-  </script>
 </head>
 <body>
   <h1>Fetch Request with Auto-Update</h1>
   <p>Points: <span id="points">0</span></p>
-  <button id="startButton" onclick="startButtonClicked()">Start</button>
 </body>
 </html>
